@@ -2,6 +2,7 @@
 
 import { TaskCard } from '@/components/Task/TaskCard';
 import { useTasks } from '@/context/TasksContext';
+import { Task } from '@/interfaces';
 
 const HomePage = () => {
 
@@ -11,9 +12,10 @@ const HomePage = () => {
     <div className="flex justify-center">
       <div className="w-7/12">
 
-        {tasks.map((task: Task) => (
-          <TaskCard key={task.id} task={task} />
-        ))}
+        {(tasks && tasks.length > 0) &&
+          tasks.map((task: Task) => (
+            <TaskCard key={task.id} task={task} />
+          ))}
 
       </div>
     </div>

@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "hooks/useLocalStorage.js", "hooks/useLocalStorage.jjs", "hooks/useLocalStorage.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "hooks/useLocalStorage.ts", "hooks/useLocalStorage.jjs", "hooks/useLocalStorage.ts", "context/TasksContext.js"],
   "exclude": ["node_modules"]
 }

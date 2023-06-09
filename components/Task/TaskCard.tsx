@@ -1,4 +1,5 @@
 import { useTasks } from '@/context/TasksContext';
+import { Task } from '@/interfaces';
 import { useRouter } from 'next/navigation';
 import { MouseEvent } from 'react';
 import { toast } from 'react-hot-toast';

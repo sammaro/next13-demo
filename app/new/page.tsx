@@ -1,6 +1,7 @@
 'use client'
 
 import { useTasks } from '@/context/TasksContext';
+import { Task } from '@/interfaces';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
@@ -14,17 +15,18 @@ const NewPage = ({ params }: { params: Props }) => {
 
   const { tasks, createTask, updateTask } = useTasks();
   const router = useRouter();
-  const { register, handleSubmit, formState: { errors }, setValue } = useForm();
+  const { register, handleSubmit, formState: { errors }, setValue } = useForm<Task>();
   const isEditing = params.id !== undefined;
 
   useEffect(() => {
     if (isEditing) {
       const taskFound = tasks.find((task: Task) => task.id === params.id);
-      setValue('id', taskFound.id);
-      setValue('title', taskFound.title);
-      setValue('description', taskFound.description);
+      setValue('id', taskFound!.id);
+      setValue('title', taskFound!.title);
+      setValue('description', taskFound!.description);
     }
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isEditing]);
 
   const onSubmit = handleSubmit((data) => {
     if (isEditing) {

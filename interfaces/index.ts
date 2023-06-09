@@ -6,8 +6,8 @@ interface LinkProps {
   target?: string;
 }
 
-interface Task {
-  id: string;
+export interface Task {
+  id?: string;
   title: string;
   description: string;
 }

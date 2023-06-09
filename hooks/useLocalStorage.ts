@@ -1,25 +1,25 @@
+import { Task } from "@/interfaces";
+
 const { useState, useEffect } = require('react');
 
-export const useLocalStorage = (key, initialState) => {
+export const useLocalStorage = (key: string, initialState: any) => {
   const [state, setState] = useState(initialState);
 
   useEffect(() => {
-    const item = localStorage.getItem(key);
-    if (item.length > 0) {
+    const item = localStorage.getItem(key) as Task[] | null;
+    if (item && item.length > 0) {
       setState(parse(item));
     }
   }, []);
 
   useEffect(() => {
-    if (state.length > 0) {
-      localStorage.setItem(key, JSON.stringify(state));
-    }
+    localStorage.setItem(key, JSON.stringify(state));
   }, [state]);
 
   return [state, setState];
 };
 
-const parse = (state) => {
+const parse = (state: any) => {
   try {
     return JSON.parse(state);
   } catch {
